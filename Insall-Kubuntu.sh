@@ -1,7 +1,7 @@
 #!/bin/bash   
 #
 # -------------------------------------------------------------------------
-#   @Programa 
+#   @Programa ffdgdfg
 # 	@name: instalaKubuntu.sh
 #	@versao: 0.0
 #	@Data 16 de Agosto de 2017
