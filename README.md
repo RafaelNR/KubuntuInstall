@@ -5,33 +5,33 @@ Esse sistema instala, desistala e configura o Kubuntu, padronizando assim para t
 
 Favor seguir as orientações do sistema e escolher qual usar deacordo com as opções abaixo.
 
-###1)
+### 1)
 	DEVE SER EXECUTANDO SEMPRE QUE TERMINAR A INSTALAÇÃO DO KUBUNTU
-###2)
+### 2)
 	INSTALA OS PROGRAMAS BÁSICOS, COMO:
 	
 	NET-TOOLS
 	SSH
 	APTITUDE
 	KDIALOG
-###3)
+### 3)
 	INSTALA TEAMVIWER
-###4)	
+### 4)	
 	INSTALA WEBMIN E ALTERA O TEMA*
-###5)
+### 5)
 	INSTALA O JAVA
 	VERSÃO ATUAL 8.0_144
-###6)	
+### 6)	
 	FAZ O DOWNLOAD DO VSKYDESKTOP.JAR
-###7)
+### 7)
 	CRIA A CRON DE MENSAGEM E DE GERENCIADMENTO DO VSKYDESKTOP
-###)
+### 8)
 	CRIA O USUÁRIO PADRÃO
-###9) 
+### 9) 
 	FAZ UM FULL UPDATE E UPGRADE
-###10)
+### 10)
 	CONFIGURA IP ESTATIVO OU DHCP
-###11)
+### 11)
 	REMOVE PROGRAMAS DESNECESSÁRIOS, COMO:
 
 	kate
@@ -52,9 +52,9 @@ Favor seguir as orientações do sistema e escolher qual usar deacordo com as op
 	kleopatra
 	knotes
 
-###12)
+### 12)
 	INFORMAÇÕES DO PROGRAMA
-###13) 
+### 13) 
 	SAIR
 
 ## [Unreleased]
