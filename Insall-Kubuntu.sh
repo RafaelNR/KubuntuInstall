@@ -3,8 +3,8 @@
 # -------------------------------------------------------------------------
 #   @Programa 
 # 	@name: instalaKubuntu.sh
-#	@versao: 0.0.2
-#	@Data 22 de Agosto de 2017
+#	@versao: 0.0.3
+#	@Data 23 de Agosto de 2017
 #	@Copyright: SEG Tecnologia, 2010 - 2017
 # --------------------------------------------------------------------------
 # Variaveis
@@ -166,6 +166,8 @@ wget $URL_WEBMIN -O webmin.deb
 sudo dpkg -i webmin.deb
 sudo apt-get install -f
 wget $URL_TEMA
+unzip authentic-theme.zip
+mv -f authentic-theme/ /etc/share/webmin/ #substitui a pasta tema
 echo " $DATA - FINAL - WEBMIN " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " " >> $LOG
