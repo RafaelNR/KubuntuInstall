@@ -18,7 +18,7 @@ URL_WEBMIN="http://prdownloads.sourceforge.net/webadmin/webmin_1.850_all.deb"
 URL_USR="http://cisru.esy.es/wp-content/uploads/2017/08/usuario.zip"; 
 URL_VSKY="http://cisru.esy.es/wp-content/uploads/2017/08/VSkyDesktop.zip";
 URL_SPT="";
-URL_TEMA="";
+URL_TEMA="http://cisru.esy.es/wp-content/uploads/2017/08/authentic-theme.zip";
 CONTATO="RAFAEL NETO - RAMAL 3259 - BARBACENA";
 DATA=`date +%d/%m/%Y-%H:%M:%S`
 echo "
