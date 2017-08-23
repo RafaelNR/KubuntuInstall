@@ -3,8 +3,8 @@
 # -------------------------------------------------------------------------
 #   @Programa 
 # 	@name: instalaKubuntu.sh
-#	@versao: 0.0
-#	@Data 16 de Agosto de 2017
+#	@versao: 0.0.2
+#	@Data 22 de Agosto de 2017
 #	@Copyright: SEG Tecnologia, 2010 - 2017
 # --------------------------------------------------------------------------
 # Variaveis
@@ -15,9 +15,10 @@ BANNER="http://www.seg.eti.br";
 DIRETORIO="/etc/Suporte";
 URL_TEAM="http://download.teamviewer.com/download/teamviewer_i386.deb";
 URL_WEBMIN="http://prdownloads.sourceforge.net/webadmin/webmin_1.850_all.deb"
-URL_USR="http://cisru.esy.es/wp-content/uploads/2017/08/usuario.zip"; #SALVAR O ARQUIVO NA PARTA $DIRETÓRIO
+URL_USR="http://cisru.esy.es/wp-content/uploads/2017/08/usuario.zip"; 
 URL_VSKY="http://cisru.esy.es/wp-content/uploads/2017/08/VSkyDesktop.zip";
 URL_SPT="";
+URL_TEMA="";
 CONTATO="RAFAEL NETO - RAMAL 3259 - BARBACENA";
 DATA=`date +%d/%m/%Y-%H:%M:%S`
 echo "
@@ -164,6 +165,7 @@ cd $DIRETORIO
 wget $URL_WEBMIN -O webmin.deb
 sudo dpkg -i webmin.deb
 sudo apt-get install -f
+wget $URL_TEMA
 echo " $DATA - FINAL - WEBMIN " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " " >> $LOG
