@@ -167,7 +167,7 @@ sudo dpkg -i webmin.deb
 sudo apt-get install -f
 wget $URL_TEMA
 unzip authentic-theme.zip
-mv -f authentic-theme/ /etc/share/webmin/ #substitui a pasta tema
+mv -f authentic-theme/ /usr/share/webmin/authentic-theme/ #substitui a pasta tema
 echo " $DATA - FINAL - WEBMIN " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " " >> $LOG
