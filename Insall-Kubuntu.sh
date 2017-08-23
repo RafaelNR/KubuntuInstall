@@ -1,7 +1,7 @@
 #!/bin/bash   
 #
 # -------------------------------------------------------------------------
-#   @Programa ffdgdfg
+#   @Programa 
 # 	@name: instalaKubuntu.sh
 #	@versao: 0.0
 #	@Data 16 de Agosto de 2017
@@ -15,8 +15,8 @@ BANNER="http://www.seg.eti.br";
 DIRETORIO="/etc/Suporte";
 URL_TEAM="http://download.teamviewer.com/download/teamviewer_i386.deb";
 URL_WEBMIN="http://prdownloads.sourceforge.net/webadmin/webmin_1.850_all.deb"
-URL_USR="";
-URL_VSKY="";
+URL_USR="http://cisru.esy.es/wp-content/uploads/2017/08/usuario.zip"; #SALVAR O ARQUIVO NA PARTA $DIRETÓRIO
+URL_VSKY="http://cisru.esy.es/wp-content/uploads/2017/08/VSkyDesktop.zip";
 URL_SPT="";
 CONTATO="RAFAEL NETO - RAMAL 3259 - BARBACENA";
 DATA=`date +%d/%m/%Y-%H:%M:%S`
@@ -192,6 +192,7 @@ echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - VSKY " >> $LOG;
 cd $DIRETORIO
 wget $URL_VSKY
+unzip VSkyDesktop.zip -d VSkyDesktop.jar
 echo " $DATA - FINAL - VSKY " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " " >> $LOG
@@ -219,8 +220,9 @@ echo " " >> $LOG
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - USUÁRIO " >> $LOG;
 cd $DIRETORIO
-wget $URL_USR -O usuario.users
-tar -xvzpf backup.users -C /
+wget $URL_USR
+unzip usuario.zip -d usuario.users
+tar -xvzpf usuario.users -C /
 USER=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --inputbox "Digite o nome do Usuário:" --fb 10 60 3>&1 1>&2 2>&3)
 sudo usermod -d /home/$USER -m medico1
 sudo usermod -l $USER medico1
