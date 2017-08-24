@@ -196,7 +196,7 @@ echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - VSKY " >> $LOG;
 cd $DIRETORIO
 wget $URL_VSKY
-unzip VSkyDesktop.zip -d VSkyDesktop.jar
+unzip VSkyDesktop.zip
 echo " $DATA - FINAL - VSKY " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " " >> $LOG
@@ -234,10 +234,10 @@ echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - USUÁRIO " >> $LOG;
 cd $DIRETORIO
 wget $URL_USR
-tar -xvzpf usuario.users -C /
+tar -xvzpf backup.users -C /
 USER=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --inputbox "Digite o nome do Usuário:" --fb 10 60 3>&1 1>&2 2>&3)
-sudo usermod -d /home/$USER -m medico1
-sudo usermod -l $USER medico1
+sudo usermod -d /home/$USER -m medico3
+sudo usermod -l $USER medico3
 echo " $DATA - FINAL - USUÁRIOS" >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " " >> $LOG

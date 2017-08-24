@@ -63,7 +63,6 @@ Favor seguir as orientações do sistema e escolher qual usar deacordo com as op
 ### Added
 - Adicionado a URL dos Scripts.
 - Adicionado o comando dos Scripts.
-- Corrigido o comando da exportação do usuário.
 
 ## [released]
 
