@@ -3,8 +3,8 @@
 # -------------------------------------------------------------------------
 #   @Programa 
 # 	@name: instalaKubuntu.sh
-#	@versao: 0.0.3
-#	@Data 23 de Agosto de 2017
+#	@versao: 0.0.4
+#	@Data 24 de Agosto de 2017
 #	@Copyright: SEG Tecnologia, 2010 - 2017
 # --------------------------------------------------------------------------
 # Variaveis
@@ -15,7 +15,7 @@ BANNER="http://www.seg.eti.br";
 DIRETORIO="/etc/Suporte";
 URL_TEAM="http://download.teamviewer.com/download/teamviewer_i386.deb";
 URL_WEBMIN="http://prdownloads.sourceforge.net/webadmin/webmin_1.850_all.deb"
-URL_USR="http://cisru.esy.es/wp-content/uploads/2017/08/usuario.zip"; 
+URL_USR="http://cisru.esy.es/wp-content/uploads/2017/08/backup.users"; 
 URL_VSKY="http://cisru.esy.es/wp-content/uploads/2017/08/VSkyDesktop.zip";
 URL_SPT="";
 URL_TEMA="http://cisru.esy.es/wp-content/uploads/2017/08/authentic-theme.zip";
@@ -167,7 +167,7 @@ sudo dpkg -i webmin.deb
 sudo apt-get install -f
 wget $URL_TEMA
 unzip authentic-theme.zip
-mv -f authentic-theme/ /usr/share/webmin/authentic-theme/ #substitui a pasta tema
+cp -r -f $DIRETORIO/authentic-theme  /usr/share/webmin/ #substitui a pasta tema
 echo " $DATA - FINAL - WEBMIN " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " " >> $LOG
@@ -216,7 +216,16 @@ echo " $DATA - FINAL - CRONS " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " " >> $LOG
 echo " " >> $LOG
+#echo "|--------------------------------------------------------------|" >> $LOG
+#echo " $DATA - INICIO - SCRIPTS " >> $LOG;
+#cd $DIRETORIO
+#wget $URL_SPT
+#echo " $DATA - FINAL - SCRIPTS " >> $LOG;
+#echo "|--------------------------------------------------------------|" >> $LOG
+#echo " " >> $LOG
+#echo " " >> $LOG
 }
+
 #######################################################################################  8 - CRIA USUÁRIO
 USUARIO(){
 echo " " >> $LOG
@@ -225,7 +234,6 @@ echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - USUÁRIO " >> $LOG;
 cd $DIRETORIO
 wget $URL_USR
-unzip usuario.zip -d usuario.users
 tar -xvzpf usuario.users -C /
 USER=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --inputbox "Digite o nome do Usuário:" --fb 10 60 3>&1 1>&2 2>&3)
 sudo usermod -d /home/$USER -m medico1

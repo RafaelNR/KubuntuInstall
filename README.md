@@ -59,13 +59,20 @@ Favor seguir as orientações do sistema e escolher qual usar deacordo com as op
 
 ## [Unreleased]
 
-
-## ChangeLog [v0.0.4] - 24/08/2017
+## ChangeLog [v0.0.x] - 
 ### Added
-- Adicionado a URL dos Scripts
-- Adicionado o comando dos Scripts
+- Adicionado a URL dos Scripts.
+- Adicionado o comando dos Scripts.
+- Corrigido o comando da exportação do usuário.
 
 ## [released]
+
+## ChangeLog [v0.0.4] - 24/08/2017 
+### Added
+- Corrigido o codigo da exportação do tema para pasta correta.
+- Corrigido a URL do usuário usuário.
+- Corrigido o arquivo de backup do usuário.
+- Corrigido o comando da exportação do usuário.
 
 ## ChangeLog [v0.0.3] - 23/08/2017 
 ### Added
