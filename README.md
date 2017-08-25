@@ -63,11 +63,23 @@ Favor seguir as orientações do sistema e escolher qual usar deacordo com as op
 ### Added
 - Adicionado a URL dos Scripts.
 - Adicionado o comando dos Scripts.
+- Adicionar dados de contatos.
+- Adicionar dados em ABOUT.
+- Adicionar msg final.
+
 
 ## [released]
 
+## ChangeLog [v0.0.5] - 25/08/2017 
+### Added
+- Alteração dos comandos case.
+- Corrigido Bug na instalção completa.
+- Melhor no LOG.
+
 ## ChangeLog [v0.0.4] - 24/08/2017 
 ### Added
+
+
 - Corrigido o codigo da exportação do tema para pasta correta.
 - Corrigido a URL do usuário usuário.
 - Corrigido o arquivo de backup do usuário.

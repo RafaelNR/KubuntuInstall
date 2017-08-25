@@ -2,15 +2,16 @@
 #
 # -------------------------------------------------------------------------
 #   @Programa 
-# 	@name: instalaKubuntu.sh
-#	@versao: 0.0.4
-#	@Data 24 de Agosto de 2017
+# 	@name: InstalaKubuntu.sh
+#	@versao: 0.0.5
+#	@Data 25 de Agosto de 2017
 #	@Copyright: SEG Tecnologia, 2010 - 2017
 # --------------------------------------------------------------------------
+
 # Variaveis
 #LOG=/var/log/`date +%Y-%m-%d`-instalacao.txt
 LOG=/var/log/Instalacao.txt
-TITULO="InstalaKubuntu - v.0.0";
+TITULO="InstalaKubuntu - v.0.5";
 BANNER="http://www.seg.eti.br";
 DIRETORIO="/etc/Suporte";
 URL_TEAM="http://download.teamviewer.com/download/teamviewer_i386.deb";
@@ -86,8 +87,6 @@ fi
 
 #######################################################################################  DIRETORIO
 CRIA_DIRETORIO(){
-echo " " >> $LOG
-echo " " >> $LOG
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - DIRETORIO CRIADO" >> $LOG;
 if [ ! -d $DIRETORIO ]; then
@@ -95,13 +94,9 @@ if [ ! -d $DIRETORIO ]; then
 	fi
 echo " $DATA - FINAL - DIRETORIO CRIADO" >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-echo " " >> $LOG
-echo " " >> $LOG
 }
 #######################################################################################  LIBERAR IPTABLES
 LIBERA_UFW(){
-echo " " >> $LOG
-echo " " >> $LOG
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - LIBERAR FIREWALL ">> $LOG;
 sudo iptables-save > $DIRETORIO/firewall.txt
@@ -122,13 +117,9 @@ sudo ip6tables -P FORWARD ACCEPT
 sudo ip6tables -P OUTPUT ACCEPT
 echo " $DATA - FINAL - LIBERAR FIREWALL" >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-echo " " >> $LOG
-echo " " >> $LOG
 }
 ######################################################################################## 2 - PROGRAMAS BÁSICOS
 BASICOS(){
-echo " " >> $LOG
-echo " " >> $LOG
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - Programas Básicos Instalados" >> $LOG;
 sudo apt-get install ssh
@@ -137,13 +128,9 @@ sudo aptitude install net-tools
 sudo aptitude install kdialog
 echo " $DATA - FINAL - Programas Básicos Instalados" >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-echo " " >> $LOG
-echo " " >> $LOG
 }
 ######################################################################################## 3 - TEAMVIEWR
 TEAMVIWER(){
-echo " " >> $LOG
-echo " " >> $LOG
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - TEAMVIWER" >> $LOG;
 cd $DIRETORIO
@@ -152,13 +139,9 @@ sudo dpkg -i teamviewer.deb
 sudo apt-get install -f -y
 echo " $DATA - FINAL - TEAMVIWER" >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-echo " " >> $LOG
-echo " " >> $LOG
 }
 ######################################################################################## 4 - WEBMIN
 WEBMIN(){
-echo " " >> $LOG
-echo " " >> $LOG
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - WEBMIN" >> $LOG;
 cd $DIRETORIO
@@ -170,13 +153,9 @@ unzip authentic-theme.zip
 cp -r -f $DIRETORIO/authentic-theme  /usr/share/webmin/ #substitui a pasta tema
 echo " $DATA - FINAL - WEBMIN " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-echo " " >> $LOG
-echo " " >> $LOG
 }
 #######################################################################################  5 - JAVA ORACLE
 JAVA(){
-echo " " >> $LOG
-echo " " >> $LOG
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - JAVA" >> $LOG;
 sudo add-apt-repository ppa:webupd8team/java
@@ -185,13 +164,9 @@ sudo apt-get install oracle-java8-installer
 sudo apt-get install oracle-java8-set-default
 echo " $DATA - FINAL - JAVA " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-echo " " >> $LOG
-echo " " >> $LOG
 }
 #######################################################################################  6 - VSKY
 VSKY(){
-echo " " >> $LOG
-echo " " >> $LOG
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - VSKY " >> $LOG;
 cd $DIRETORIO
@@ -199,13 +174,9 @@ wget $URL_VSKY
 unzip VSkyDesktop.zip
 echo " $DATA - FINAL - VSKY " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-echo " " >> $LOG
-echo " " >> $LOG
 }
 #######################################################################################  7 - CRONS E SCRIPTS
 CRONS(){
-echo " " >> $LOG
-echo " " >> $LOG
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - CRONS " >> $LOG;
 echo -e "00 */1 * * * /usr/bin/mensagem.sh                                                                                                                                                                     
@@ -214,8 +185,6 @@ echo -e "00 */1 * * * /usr/bin/mensagem.sh
 /etc/init.d/cron restart;
 echo " $DATA - FINAL - CRONS " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-echo " " >> $LOG
-echo " " >> $LOG
 #echo "|--------------------------------------------------------------|" >> $LOG
 #echo " $DATA - INICIO - SCRIPTS " >> $LOG;
 #cd $DIRETORIO
@@ -228,8 +197,6 @@ echo " " >> $LOG
 
 #######################################################################################  8 - CRIA USUÁRIO
 USUARIO(){
-echo " " >> $LOG
-echo " " >> $LOG
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - USUÁRIO " >> $LOG;
 cd $DIRETORIO
@@ -240,13 +207,9 @@ sudo usermod -d /home/$USER -m medico3
 sudo usermod -l $USER medico3
 echo " $DATA - FINAL - USUÁRIOS" >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-echo " " >> $LOG
-echo " " >> $LOG
 }
 #######################################################################################  9 - ATUALIZAÇÕES
 ATUALIZA(){
-echo " " >> $LOG
-echo " " >> $LOG
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - ATUALIZAÇÕES" >> $LOG;
 sudo apt-get update
@@ -254,13 +217,12 @@ sudo apt-get full-upgrade
 whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "ATUALIZAÇÃO COMPLETA!"  --fb 0 0 0
 echo " $DATA - FINAL - ATUALIZAÇÕES " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-echo " " >> $LOG
-echo " " >> $LOG
 }
 #######################################################################################  10 - IP'S
 IP(){
 
-
+echo "|--------------------------------------------------------------|" >> $LOG
+echo " $DATA - INICIO - IP" >> $LOG;
 interfaces_file="/etc/network/interfaces" 
 
 menuIP=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --menu "Selecione uma opção!" --fb 0 0 0 \
@@ -356,14 +318,14 @@ nameserver 8.8.4.4" > /etc/resolv.conf;
 echo " $DATA DNS adicionado." >> $LOG;
 whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "DNS ADICIONADO" --fb 0 0 0
 
+echo " $DATA - FINAL - IP" >> $LOG;
+echo "|--------------------------------------------------------------|" >> $LOG
+
 }
 #######################################################################################  11 - REMOVE
 REMOVE(){
-echo " " >> $LOG
-echo " " >> $LOG
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - REMOÇÃO BÁSICAS" >> $LOG;
-sudo aptitude remove kate
 sudo aptitude remove kmail
 sudo aptitude remove kontact
 sudo aptitude remove korganizer
@@ -382,8 +344,6 @@ sudo aptitude remove kleopatra
 sudo aptitude remove knotes
 echo " $DATA - FINAL - REMOÇÃO BÁSICAS " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-echo " " >> $LOG
-echo " " >> $LOG
 }
 #######################################################################################  12 - ABOUNT
 ABOUT (){
@@ -436,7 +396,7 @@ case $menu01Option in
 		TEAMVIWER # 3
 		WEBMIN # 4
 		JAVA # 5
-		VSKY#6
+		VSKY #6
 		CRONS #7
 		USUARIO #8
 		ATUALIZA # 9
@@ -450,73 +410,62 @@ case $menu01Option in
 		CRIA_DIRETORIO
 		BASICOS
 		MAIN_MENU
-		kill $$
 	;;
 	3) 
 		#Instalação TeawViewr
 		CRIA_DIRETORIO
 		TEAMVIWER
 		MAIN_MENU
-		kill $$
 	;;
 	4) 
 		#Instalação Webmin
 		CRIA_DIRETORIO
 		WEBMIN
 		MAIN_MENU
-		kill $$
 	;;
 	5) 
 		#Instalação Java Oracle
 		CRIA_DIRETORIO
 		JAVA
 		MAIN_MENU
-		kill $$
 	;;
 	6) 
 		#Download Vsky
 		CRIA_DIRETORIO
 		VSKY
 		MAIN_MENU
-		kill $$
 	;;
 	7)
 		#Cria Crons e Scripts
 		CRIA_DIRETORIO
 		CRONS
 		MAIN_MENU
-		kill $$
 	;;
 	8)
 		#Importa Usuário
 		CRIA_DIRETORIO
 		USUARIO
 		MAIN_MENU
-		kill $$
 	;;
 	9) 
 		#Atualizações
 		ATUALIZA
 		MAIN_MENU
-		kill $$
 	;;
 	10) 
 		#IP
 		IP
 		MAIN_MENU
-		kill $$
 	;;
 	11) 
 		#Remover Programas Desnecessários
 		REMOVE
 		MAIN_MENU
-		kill $$
 	;;
 	12) 
 		#About
 		ABOUT
 		MAIN_MENU
-		kill $$
 	;;
 	13) 
 		#Exit
