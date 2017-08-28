@@ -1,7 +1,7 @@
 
 ## INFORMAÇÕES BÁSICOS DO SISTEMA
 
-Esse sistema instala, desistala e configura o Kubuntu, padronizando assim para todos os SAMU's
+Esse sistema configura o Kubuntu, padronizando em todos as Centrais de Regulação.
 
 Favor seguir as orientações do sistema e escolher qual usar deacordo com as opções abaixo.
 
@@ -17,12 +17,13 @@ Favor seguir as orientações do sistema e escolher qual usar deacordo com as op
 ### 3)
 	INSTALA TEAMVIWER
 ### 4)	
-	INSTALA WEBMIN E ALTERA O TEMA*
+	INSTALA WEBMIN E ALTERA O TEMA
 ### 5)
 	INSTALA O JAVA
 	VERSÃO ATUAL 8.0_144
 ### 6)	
-	FAZ O DOWNLOAD DO VSKYDESKTOP.JAR
+	FAZ O DOWNLOAD OU ATUALIZA O VSKYDESKTOP.JAR (SEMPRE PARA VERSÃO MAIS ATUAL)
+	VERSÃO ATUAL 8.9.9
 ### 7)
 	CRIA A CRON DE MENSAGEM E DE GERENCIADMENTO DO VSKYDESKTOP
 ### 8)
@@ -63,8 +64,14 @@ Favor seguir as orientações do sistema e escolher qual usar deacordo com as op
 ### Added
 - Adicionado a URL dos Scripts.
 - Adicionado o comando dos Scripts.
+- Adicionar o Script de log do vsky do jackson.
+- Definir automaticamente a placa de rede.
 
 ## [released]
+## ChangeLog [v0.0.7] - 27/08/2017
+### Added
+- Definir automaticamente a placa de rede(eth0).
+
 
 ## ChangeLog [v0.0.6] - 27/08/2017
 ### Added

@@ -3,14 +3,14 @@
 # -------------------------------------------------------------------------
 #   @Programa 
 # 	@name: InstalaKubuntu.sh
-#	@versao: 0.0.5
-#	@Data 25 de Agosto de 2017
+#	@versao: 0.0.6
+#	@Data 27 de Agosto de 2017
 #	@Copyright: SEG Tecnologia, 2010 - 2017
 # --------------------------------------------------------------------------
 
 # Variaveis
 LOG=/var/log/Instalacao.txt
-TITULO="Configura Kubuntu - v.0.0.5";
+TITULO="Configura Kubuntu - v.0.0.6";
 BANNER="http://www.seg.eti.br";
 DIRETORIO="/etc/Suporte";
 URL_TEAM="http://download.teamviewer.com/download/teamviewer_i386.deb";
@@ -198,6 +198,8 @@ IP(){
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - IP" >> $LOG;
 interfaces_file="/etc/network/interfaces" 
+perl -i -pe 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
+grub-mkconfig -o /boot/grub/grub.cfg
 
 menuIP=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --menu "Selecione uma opção!" --fb 0 0 0 \
 "1" "DHCP" \
@@ -221,15 +223,16 @@ case $menuIP in
 		echo "auto lo" > $interfaces_file
 		echo "iface lo inet loopback" >> $interfaces_file
 		echo ""  >> $interfaces_file
-		echo "iface enp2s0f0 inet dhcp" >> $interfaces_file
-		echo "allow-hotplug enp2s0f0" >> $interfaces_file
+		echo "auto eth0"  >> $interfaces_file
+		echo "iface eth0 inet dhcp" >> $interfaces_file
+		echo "allow-hotplug eth0" >> $interfaces_file
 		
 		/etc/init.d/networking restart 
-		ifconfig enp2s0f0 down
-		ifconfig enp2s0f0 up
+		ifconfig eth0 down
+		ifconfig eth0 up
 		whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "DHCP ATIVADO" --fb 0 0 0
 		
-		kill $$
+		MAIN_MENU
 		;;
 		
 	2)
@@ -271,18 +274,18 @@ case $menuIP in
 		fi
 	
 		
-		ifconfig enp2s0f0 $REDEIP/24 netmask $REDENETMASK
-		route add default gw $REDEGATEWAY enp2s0f0
+		ifconfig eth0 $REDEIP/24 netmask $REDENETMASK
+		route add default gw $REDEGATEWAY eth0
 		etc/init.d/networking restart
 		whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "IP ESÁTICO ADICIONADO" --fb 0 0 0
 		
-		kill $$
+		MAIN_MENU
 		;;
 		3) 
 
+		
 		MAIN_MENU
-		kill $$
-	;;
+		;;
 esac
 done
 
