@@ -63,18 +63,21 @@ Favor seguir as orientações do sistema e escolher qual usar deacordo com as op
 ### Added
 - Adicionado a URL dos Scripts.
 - Adicionado o comando dos Scripts.
+
+## [released]
+
+## ChangeLog [v0.0.6] - 27/08/2017
+### Added
 - Adicionar dados de contatos.
 - Adicionar dados em ABOUT.
 - Adicionar msg final.
-
-
-## [released]
+- Corrigido bugs.
 
 ## ChangeLog [v0.0.5] - 25/08/2017 
 ### Added
 - Alteração dos comandos case.
 - Corrigido Bug na instalção completa.
-- Melhor no LOG.
+- Melhora no LOG do sistema.
 
 ## ChangeLog [v0.0.4] - 24/08/2017 
 ### Added

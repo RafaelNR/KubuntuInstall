@@ -9,9 +9,8 @@
 # --------------------------------------------------------------------------
 
 # Variaveis
-#LOG=/var/log/`date +%Y-%m-%d`-instalacao.txt
 LOG=/var/log/Instalacao.txt
-TITULO="InstalaKubuntu - v.0.5";
+TITULO="Configura Kubuntu - v.0.0.5";
 BANNER="http://www.seg.eti.br";
 DIRETORIO="/etc/Suporte";
 URL_TEAM="http://download.teamviewer.com/download/teamviewer_i386.deb";
@@ -20,38 +19,13 @@ URL_USR="http://cisru.esy.es/wp-content/uploads/2017/08/backup.users";
 URL_VSKY="http://cisru.esy.es/wp-content/uploads/2017/08/VSkyDesktop.zip";
 URL_SPT="";
 URL_TEMA="http://cisru.esy.es/wp-content/uploads/2017/08/authentic-theme.zip";
-CONTATO="RAFAEL NETO - RAMAL 3259 - BARBACENA";
+CONTATO="RAFAEL RODRIGUES - RAMAL 3259 - SEG BARBACENA";
 DATA=`date +%d/%m/%Y-%H:%M:%S`
-echo "
- --------------------------------------------------------------------------------
-|                                                                                |
-|  ____  _____ ____   _____ _____ ____ _   _  ___  _     ___   ____ ___    _     |
-| / ___|| ____/ ___| |_   _| ____/ ___| \ | |/ _ \| |   / _ \ / ___|_ _|  / \    |
-| \___ \|  _|| |  _    | | |  _|| |   |  \| | | | | |  | | | | |  _ | |  / _ \   |
-|  ___) | |__| |_| |   | | | |__| |___| |\  | |_| | |__| |_| | |_| || | / ___ \  |
-| |____/|_____\____|   |_| |_____\____|_| \_|\___/|_____\___/ \____|___/_/   \_\ |
-|                                                                                |
-|                                                                                |
-|                              Telefonia IP & Call Center, Integração de Filiais |
-|                                         Segurança de Redes/Informação, CFTV IP |
-|                                           Projetos, Internetworking & Soluções |
-|                                           Suporte, Outsourcing & Monitoramento |
-|                                                                 seg@seg.eti.br |
-|                                                                 www.seg.eti.br |
-|                                                               +55 38 3218 8470 |
-|                                                               +55 38 3216 9282 |
- --------------------------------------------------------------------------------
-| instalaKubuntu.sh    | Instalação Automática Kubuntu SAMU 192                  |
- --------------------------------------------------------------------------------				
-"
-sleep 5
-
-clear
 
 #######################################################################################  MAIN_MENU
 MAIN_MENU (){
 
-menu01Option=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --menu "Selecione a opção desejada:" --fb 15 50 6 \
+menu01Option=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --menu "Selecione a opção desejada:" --fb 25 78 16 \
 "1" "Instalação Completa" \
 "2" "Instalação de Programas Baíscos" \
 "3" "Instalação TeawViewr" \
@@ -70,15 +44,15 @@ status=$?
 
 if [ $status != 0 ]; then
 	whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "
-	
-ORBIGADO!
+Contatos:
+$CONTATO
 
 Copyright:
 - SEG Tecnologia - BARBACENA
+- http://seg.eti.br/
 
 Licence:
-- GPL v3 <http://www.gnu.org/licenses/>
-	
+- GPL v3 <http://www.gnu.org/licenses/>	
 " --fb 0 0 0
 	exit;
 fi
@@ -349,9 +323,27 @@ echo "|--------------------------------------------------------------|" >> $LOG
 ABOUT (){
 clear
 whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "
-	
-	
-" --fb 0 0 0
+ --------------------------------------------------------------------------------
+|                                                                                |
+|  ____  _____ ____   _____ _____ ____ _   _  ___  _     ___   ____ ___    _     |
+| / ___|| ____/ ___| |_   _| ____/ ___| \ | |/ _ \| |   / _ \ / ___|_ _|  / \    |
+| \___ \|  _|| |  _    | | |  _|| |   |  \| | | | | |  | | | | |  _ | |  / _ \   |
+|  ___) | |__| |_| |   | | | |__| |___| |\  | |_| | |__| |_| | |_| || | / ___ \  |
+| |____/|_____\____|   |_| |_____\____|_| \_|\___/|_____\___/ \____|___/_/   \_\ |
+|                                                                                |
+|                                                                                |
+|                              Telefonia IP & Call Center, Integração de Filiais |
+|                                         Segurança de Redes/Informação, CFTV IP |
+|                                           Projetos, Internetworking & Soluções |
+|                                           Suporte, Outsourcing & Monitoramento |
+|                                                                 www.seg.eti.br |
+|                                                             Suporte ou duvidas |
+|                                                http://chamados.seg.eti.br:3002 |
+|                                  RAFAEL RODRIGUES - RAMAL 3259 - SEG BARBACENA |
+ --------------------------------------------------------------------------------
+|    Programa para aleteraões no Kubnutu para as Centrais de Regulação           |
+ --------------------------------------------------------------------------------	
+" --fb 30 88 15
 }
 
 #######################################################################################  13 - END_MSG
@@ -359,7 +351,11 @@ END_MSG (){
 clear
 
 whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "
+Copyright:
+- SEG Tecnologia - BARBACENA
 
+Licence:
+- GPL v3 <http://www.gnu.org/licenses/>
 "  --fb 0 0 0
 
 }
