@@ -66,7 +66,7 @@ Favor seguir as orientações do sistema e escolher qual usar deacordo com as op
 - Adicionado o comando dos Scripts.
 
 ## [released]
-## ChangeLog [v0.0.x] - xx/08/2017
+## ChangeLog [v0.0.7] - 29/08/2017
 ### Added
 - Definir automaticamente a placa de rede(eth0).
 - Alterado fluxo de configuração de placa de rede.
