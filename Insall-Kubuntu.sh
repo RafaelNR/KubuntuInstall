@@ -158,15 +158,6 @@ echo -e "00 */1 * * * /usr/bin/mensagem.sh
 /etc/init.d/cron restart;
 echo " $DATA - FINAL - CRONS " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-echo "|--------------------------------------------------------------|" >> $LOG
-echo " $DATA - INICIO - SCRIPTS " >> $LOG;
-cd $DIRETORIO
-wget https://raw.githubusercontent.com/RafaelNR/KubuntuInstall/master/Scripts/mataVsky.sh
-chmod +x mataVsky.sh
-echo " $DATA - FINAL - SCRIPTS " >> $LOG;
-echo "|--------------------------------------------------------------|" >> $LOG
-echo " " >> $LOG
-echo " " >> $LOG
 }
 
 #######################################################################################  8 - CRIA USUÁRIO
@@ -180,6 +171,16 @@ USER=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --inputbox "Digite o
 sudo usermod -d /home/$USER -m medico3
 sudo usermod -l $USER medico3
 echo " $DATA - FINAL - USUÁRIOS" >> $LOG;
+echo "|--------------------------------------------------------------|" >> $LOG
+echo "|--------------------------------------------------------------|" >> $LOG
+echo " $DATA - INICIO - SCRIPTS " >> $LOG;
+cd $DIRETORIO
+wget https://raw.githubusercontent.com/RafaelNR/KubuntuInstall/master/Scripts/mataVsky.sh
+chmod +x mataVsky.sh
+wget https://raw.githubusercontent.com/RafaelNR/KubuntuInstall/master/Scripts/FecharVsky.desktop
+chmod +x FecharVsky.desktop
+cp FecharVsky.desktop /home/Suporteti/FecharVsky.desktop
+echo " $DATA - FINAL - SCRIPTS " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 }
 #######################################################################################  9 - ATUALIZAÇÕES

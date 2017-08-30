@@ -1,11 +1,11 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
-Name=Fechar Vsky
-Comment=Fechar Vsky
+Name=FecharVsky
+Comment=FecharVsky
 Exec=/etc/Suporte/mataVsky.sh
 Icon=waiting
 Terminal=false
 Type=Application
-Name[en_US]=Fechar Vsky
-Name[pt_BR]=Fechar Vsky
+Name[en_US]=FecharVsky
+Name[pt_BR]=FecharVsky
 
