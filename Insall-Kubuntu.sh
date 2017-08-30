@@ -17,7 +17,6 @@ URL_TEAM="http://download.teamviewer.com/download/teamviewer_i386.deb";
 URL_WEBMIN="http://prdownloads.sourceforge.net/webadmin/webmin_1.850_all.deb"
 URL_USR="http://cisru.esy.es/wp-content/uploads/2017/08/backup.users"; 
 URL_VSKY="http://cisru.esy.es/wp-content/uploads/2017/08/VSkyDesktop.zip";
-URL_SPT="";
 URL_TEMA="http://cisru.esy.es/wp-content/uploads/2017/08/authentic-theme.zip";
 CONTATO="RAFAEL RODRIGUES - RAMAL 3259 - SEG BARBACENA";
 DATA=`date +%d/%m/%Y-%H:%M:%S`
@@ -159,14 +158,15 @@ echo -e "00 */1 * * * /usr/bin/mensagem.sh
 /etc/init.d/cron restart;
 echo " $DATA - FINAL - CRONS " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-#echo "|--------------------------------------------------------------|" >> $LOG
-#echo " $DATA - INICIO - SCRIPTS " >> $LOG;
-#cd $DIRETORIO
-#wget $URL_SPT
-#echo " $DATA - FINAL - SCRIPTS " >> $LOG;
-#echo "|--------------------------------------------------------------|" >> $LOG
-#echo " " >> $LOG
-#echo " " >> $LOG
+echo "|--------------------------------------------------------------|" >> $LOG
+echo " $DATA - INICIO - SCRIPTS " >> $LOG;
+cd $DIRETORIO
+wget https://raw.githubusercontent.com/RafaelNR/KubuntuInstall/master/Scripts/mataVsky.sh
+chmod +x mataVsky.sh
+echo " $DATA - FINAL - SCRIPTS " >> $LOG;
+echo "|--------------------------------------------------------------|" >> $LOG
+echo " " >> $LOG
+echo " " >> $LOG
 }
 
 #######################################################################################  8 - CRIA USUÁRIO

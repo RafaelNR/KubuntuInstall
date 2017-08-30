@@ -72,6 +72,8 @@ Favor seguir as orientações do sistema e escolher qual usar deacordo com as op
 - Alterado fluxo de configuração de placa de rede.
 - Adicionar o Script de log de abertura e fechamento do Vsky.
 - Adicionado Script para fechar o vsky.
+- Adicionado atalho do fechar o vsky na área de trabalho.
+
 
 
 

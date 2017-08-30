@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Fechar Vsky
+Comment=Fechar Vsky
+Exec=/etc/Suporte/mataVsky.sh
+Icon=waiting
+Terminal=false
+Type=Application
+Name[en_US]=Fechar Vsky
+Name[pt_BR]=Fechar Vsky
+
