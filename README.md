@@ -64,13 +64,15 @@ Favor seguir as orientações do sistema e escolher qual usar deacordo com as op
 ### Added
 - Adicionado a URL dos Scripts.
 - Adicionado o comando dos Scripts.
-- Adicionar o Script de log do vsky do jackson.
-- Definir automaticamente a placa de rede.
 
 ## [released]
-## ChangeLog [v0.0.7] - 27/08/2017
+## ChangeLog [v0.0.x] - xx/08/2017
 ### Added
 - Definir automaticamente a placa de rede(eth0).
+- Alterado fluxo de configuração de placa de rede.
+- Adicionar o Script de log de abertura e fechamento do Vsky.
+- Adicionado Script para fechar o vsky.
+
 
 
 ## ChangeLog [v0.0.6] - 27/08/2017

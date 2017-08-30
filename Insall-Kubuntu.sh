@@ -3,14 +3,14 @@
 # -------------------------------------------------------------------------
 #   @Programa 
 # 	@name: InstalaKubuntu.sh
-#	@versao: 0.0.6
-#	@Data 27 de Agosto de 2017
+#	@versao: 0.0.7
+#	@Data 29 de Agosto de 2017
 #	@Copyright: SEG Tecnologia, 2010 - 2017
 # --------------------------------------------------------------------------
 
 # Variaveis
 LOG=/var/log/Instalacao.txt
-TITULO="Configura Kubuntu - v.0.0.6";
+TITULO="Configura Kubuntu - v.0.0.7";
 BANNER="http://www.seg.eti.br";
 DIRETORIO="/etc/Suporte";
 URL_TEAM="http://download.teamviewer.com/download/teamviewer_i386.deb";
@@ -25,7 +25,7 @@ DATA=`date +%d/%m/%Y-%H:%M:%S`
 #######################################################################################  MAIN_MENU
 MAIN_MENU (){
 
-menu01Option=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --menu "Selecione a opção desejada:" --fb 25 78 16 \
+menu01Option=$(whiptail	 --title "${TITULO}" --backtitle "${BANNER}" --menu "Selecione a opção desejada:" --fb 25 78 16 \
 "1" "Instalação Completa" \
 "2" "Instalação de Programas Baíscos" \
 "3" "Instalação TeawViewr" \
@@ -197,46 +197,46 @@ IP(){
 
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - IP" >> $LOG;
+
 interfaces_file="/etc/network/interfaces" 
-perl -i -pe 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
+
+Configura placa de rede para nome eth0
+sudo perl -i -pe 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
-
-menuIP=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --menu "Selecione uma opção!" --fb 0 0 0 \
-"1" "DHCP" \
-"2" "STATICO" \
-"3" "Exit" 3>&1 1>&2 2>&3) 
- 
-status=$?
-
-if [ $status != 0 ]; then
-	MAIN_MENU
-	exit;
-fi
+		
+whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "ATUALIZADO NOME DA PLACA DE REDE" --fb 0 0 0
 
 
-while true
-do
-case $menuIP in
-	
-	1)
-		#DHCP
+if whiptail --title "${TITULO}" --backtitle "${BANNER}" --yes-button "DHCP" --no-button "ESTÁTICO"  --yesno "Escolha o Tipo de Configuração do IP:" --fb 10 50
+then
+    #DHCP
 		echo "auto lo" > $interfaces_file
 		echo "iface lo inet loopback" >> $interfaces_file
 		echo ""  >> $interfaces_file
 		echo "auto eth0"  >> $interfaces_file
 		echo "iface eth0 inet dhcp" >> $interfaces_file
-		echo "allow-hotplug eth0" >> $interfaces_file
 		
 		/etc/init.d/networking restart 
 		ifconfig eth0 down
 		ifconfig eth0 up
+
 		whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "DHCP ATIVADO" --fb 0 0 0
 		
-		MAIN_MENU
-		;;
+		echo -e "nameserver 8.8.8.8
+		nameserver 8.8.4.4" > /etc/resolv.conf;
+		echo " $DATA DNS adicionado." >> $LOG;
+
+		whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "DNS ADICIONADO" --fb 0 0 0
 		
-	2)
-		#ENDEREÇO DE IP
+		#Configura placa de rede para nome eth0
+		perl -i -pe 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
+		grub-mkconfig -o /boot/grub/grub.cfg
+
+		echo " $DATA - FINAL - IP" >> $LOG;
+		echo "|--------------------------------------------------------------|" >> $LOG
+		MAIN_MENU
+else
+    	#ENDEREÇO DE IP
 		REDEIP=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --inputbox "Digite o endereço IP:" --fb 10 60 3>&1 1>&2 2>&3)
 		statussaida=$?
 		if [ $statussaida = 0 ]; then
@@ -263,41 +263,25 @@ case $menuIP in
 		else
     		echo " Não configurou gateway." >> $LOG;
 		fi
-		
-		#BROADCAST
-		REDEBROAD=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --inputbox "Digite o broadcast:" --fb 10 60 3>&1 1>&2 2>&3)
-		statussaida=$?
-		if [ $statussaida = 0 ]; then
-    		echo " IP BROADCAST: $REDEBROAD" >> $LOG;
-		else
-    		echo " Não configurou broadcast." >> $LOG;
-		fi
 	
 		
 		ifconfig eth0 $REDEIP/24 netmask $REDENETMASK
 		route add default gw $REDEGATEWAY eth0
 		etc/init.d/networking restart
+
 		whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "IP ESÁTICO ADICIONADO" --fb 0 0 0
+
+		echo -e "nameserver 8.8.8.8
+		nameserver 8.8.4.4" > /etc/resolv.conf;
+		echo " $DATA DNS adicionado." >> $LOG;
+
+		whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "DNS ADICIONADO" --fb 0 0 0
+
+		echo " $DATA - FINAL - IP" >> $LOG;
+		echo "|--------------------------------------------------------------|" >> $LOG
 		
 		MAIN_MENU
-		;;
-		3) 
-
-		
-		MAIN_MENU
-		;;
-esac
-done
-
-	
-echo -e "nameserver 8.8.8.8
-nameserver 8.8.4.4" > /etc/resolv.conf;
-echo " $DATA DNS adicionado." >> $LOG;
-whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "DNS ADICIONADO" --fb 0 0 0
-
-echo " $DATA - FINAL - IP" >> $LOG;
-echo "|--------------------------------------------------------------|" >> $LOG
-
+fi
 }
 #######################################################################################  11 - REMOVE
 REMOVE(){
