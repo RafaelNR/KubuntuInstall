@@ -52,18 +52,25 @@ Favor seguir as orientações do sistema e escolher qual usar deacordo com as op
 	plasma-discover 
 	kleopatra
 	knotes
-
 ### 12)
+	ADICIONADO OS SCRIPTS (executar depois de tudo.)
+### 13)
 	INFORMAÇÕES DO PROGRAMA
-### 13) 
+### 14) 
 	SAIR
 
 ## [Unreleased]
 
 ## ChangeLog [v0.0.x] - 
 ### Added
+
+
+## [released]
+## ChangeLog [v0.0.8] - 31/08/2017
+### Added
+- Adiciona a opção de Scrpits.
 - Adicionado a URL dos Scripts.
-- Adicionado o comando dos Scripts.
+- Adicionado opções de copiar os scripts para determinado usuário.
 
 ## [released]
 ## ChangeLog [v0.0.7] - 29/08/2017
@@ -73,9 +80,6 @@ Favor seguir as orientações do sistema e escolher qual usar deacordo com as op
 - Adicionar o Script de log de abertura e fechamento do Vsky.
 - Adicionado Script para fechar o vsky.
 - Adicionado atalho do fechar o vsky na área de trabalho.
-
-
-
 
 ## ChangeLog [v0.0.6] - 27/08/2017
 ### Added

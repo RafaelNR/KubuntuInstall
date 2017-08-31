@@ -3,14 +3,14 @@
 # -------------------------------------------------------------------------
 #   @Programa 
 # 	@name: InstalaKubuntu.sh
-#	@versao: 0.0.7
-#	@Data 29 de Agosto de 2017
+#	@versao: 0.0.8
+#	@Data 31 de Agosto de 2017
 #	@Copyright: SEG Tecnologia, 2010 - 2017
 # --------------------------------------------------------------------------
 
 # Variaveis
 LOG=/var/log/Instalacao.txt
-TITULO="Configura Kubuntu - v.0.0.7";
+TITULO="Configura Kubuntu - v.0.0.8";
 BANNER="http://www.seg.eti.br";
 DIRETORIO="/etc/Suporte";
 URL_TEAM="http://download.teamviewer.com/download/teamviewer_i386.deb";
@@ -36,8 +36,9 @@ menu01Option=$(whiptail	 --title "${TITULO}" --backtitle "${BANNER}" --menu "Sel
 "9" "Fazer atualizações" \
 "10" "Configura IP" \
 "11" "Remover Programas Desnecessários" \
-"12" "About" \
-"13" "Exit" 3>&1 1>&2 2>&3)
+"12" "Adionado os Scripts" \
+"13" "About" \
+"14" "Exit" 3>&1 1>&2 2>&3)
  
 status=$?
 
@@ -172,16 +173,6 @@ sudo usermod -d /home/$USER -m medico3
 sudo usermod -l $USER medico3
 echo " $DATA - FINAL - USUÁRIOS" >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
-echo "|--------------------------------------------------------------|" >> $LOG
-echo " $DATA - INICIO - SCRIPTS " >> $LOG;
-cd $DIRETORIO
-wget https://raw.githubusercontent.com/RafaelNR/KubuntuInstall/master/Scripts/mataVsky.sh
-chmod +x mataVsky.sh
-wget https://raw.githubusercontent.com/RafaelNR/KubuntuInstall/master/Scripts/FecharVsky.desktop
-chmod +x FecharVsky.desktop
-cp FecharVsky.desktop /home/Suporteti/FecharVsky.desktop
-echo " $DATA - FINAL - SCRIPTS " >> $LOG;
-echo "|--------------------------------------------------------------|" >> $LOG
 }
 #######################################################################################  9 - ATUALIZAÇÕES
 ATUALIZA(){
@@ -308,6 +299,32 @@ echo " $DATA - FINAL - REMOÇÃO BÁSICAS " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 }
 #######################################################################################  12 - ABOUNT
+SCRIPTS(){
+echo "|--------------------------------------------------------------|" >> $LOG
+echo " $DATA - INICIO - SCRIPTS " >> $LOG;
+cd $DIRETORIO
+usr1=$(users | awk '{print $1}')
+usr2=$(users | awk '{print $2}')
+usr=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --checklist --fb \
+"Onde deixa adicionar os Scripts?" 15 50 5 \
+"${usr1}" "" ON \
+"${usr2}" "" ON 3>&1 1>&2 2>&3)
+status=$?
+if [ $status = 0 ]
+then
+	wget https://raw.githubusercontent.com/RafaelNR/KubuntuInstall/master/Scripts/mataVsky.sh
+	chmod +x mataVsky.sh
+	wget https://raw.githubusercontent.com/RafaelNR/KubuntuInstall/master/Scripts/FecharVsky.desktop
+	chmod +x FecharVsky.desktop
+	cp FecharVsky.desktop /home/$usr1/Área\ de\ Trabalho/FecharVsky.desktop
+	cp FecharVsky.desktop /home/$usr2/Área\ de\ Trabalho/FecharVsky.desktop
+else
+	whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "Scripts não foram Adicionados!"  --fb 0 0 0   
+fi
+echo " $DATA - FINAL - SCRIPTS " >> $LOG;
+echo "|--------------------------------------------------------------|" >> $LOG
+}
+#######################################################################################  13 - ABOUNT
 ABOUT (){
 clear
 whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "
@@ -329,12 +346,12 @@ whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "
 |                                                http://chamados.seg.eti.br:3002 |
 |                                  RAFAEL RODRIGUES - RAMAL 3259 - SEG BARBACENA |
  --------------------------------------------------------------------------------
-|    Programa para aleteraões no Kubnutu para as Centrais de Regulação           |
+|       Programa para aleteraões no Kubnutu das as Centrais de Regulação         |
  --------------------------------------------------------------------------------	
 " --fb 30 88 15
 }
 
-#######################################################################################  13 - END_MSG
+#######################################################################################  14 - END_MSG
 END_MSG (){
 clear
 
@@ -447,11 +464,16 @@ case $menu01Option in
 		MAIN_MENU
 	;;
 	12) 
+		#Scripts
+		SCRIPTS
+		MAIN_MENU
+	;;
+	13) 
 		#About
 		ABOUT
 		MAIN_MENU
 	;;
-	13) 
+	14) 
 		#Exit
 		END_MSG
 		kill $$
