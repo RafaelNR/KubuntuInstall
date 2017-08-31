@@ -153,9 +153,7 @@ echo "|--------------------------------------------------------------|" >> $LOG
 CRONS(){
 echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - CRONS " >> $LOG;
-echo -e "00 */1 * * * /usr/bin/mensagem.sh                                                                                                                                                                     
-* * * * *  ps aux | grep java |awk '{ if (($3) >= 100) print "/usr/bin/Suporte/Vsky.sh"}'|sh                                                                                                          
-* * * * *  sleep 30 && ps aux | grep java |awk '{ if (($3) >= 100) print "/usr/bin/Suporte/Vsky.sh"}'|sh " >> /etc/crontab;
+echo -e "00 */1 * * * /usr/bin/mensagem.sh" >> /etc/crontab;
 /etc/init.d/cron restart;
 echo " $DATA - FINAL - CRONS " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
@@ -219,10 +217,6 @@ then
 		echo " $DATA DNS adicionado." >> $LOG;
 
 		whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "DNS ADICIONADO" --fb 0 0 0
-		
-		#Configura placa de rede para nome eth0
-		perl -i -pe 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
-		grub-mkconfig -o /boot/grub/grub.cfg
 
 		echo " $DATA - FINAL - IP" >> $LOG;
 		echo "|--------------------------------------------------------------|" >> $LOG
@@ -312,6 +306,8 @@ usr=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --checklist --fb \
 status=$?
 if [ $status = 0 ]
 then
+	wget https://raw.githubusercontent.com/RafaelNR/KubuntuInstall/master/Scripts/mensagem.sh
+	chmod +x mensagem.sh
 	wget https://raw.githubusercontent.com/RafaelNR/KubuntuInstall/master/Scripts/mataVsky.sh
 	chmod +x mataVsky.sh
 	wget https://raw.githubusercontent.com/RafaelNR/KubuntuInstall/master/Scripts/FecharVsky.desktop
