@@ -192,7 +192,7 @@ echo " $DATA - INICIO - IP" >> $LOG;
 
 interfaces_file="/etc/network/interfaces" 
 
-Configura placa de rede para nome eth0
+#Configura placa de rede para nome eth0
 sudo perl -i -pe 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 		
