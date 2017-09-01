@@ -1,10 +1,14 @@
 
 ## INSTALL - Executar o Script
 
-mkdir /etc/Suporte &&
-cd /etc/Suporte && 
-sudo wget https://raw.githubusercontent.com/RafaelNR/KubuntuInstall/master/Insall-Kubuntu.sh &&
-chamod +x Install-Kubuntu.sh &&
+mkdir /etc/Suporte
+
+cd /etc/Suporte 
+
+sudo wget https://raw.githubusercontent.com/RafaelNR/KubuntuInstall/master/Insall-Kubuntu.sh 
+
+chmod +x Install-Kubuntu.sh 
+
 ./Install-kubuntu.sh
 
 ## INFORMAÇÕES BÁSICOS DO SISTEMA
