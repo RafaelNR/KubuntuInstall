@@ -1,5 +1,5 @@
 
-##INSTALL - Executar o Script
+## INSTALL - Executar o Script
 
 mkdir /etc/Suporte
 cd /etc/Suporte
