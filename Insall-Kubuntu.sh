@@ -25,15 +25,15 @@ DATA=`date +%d/%m/%Y-%H:%M:%S`
 MAIN_MENU (){
 
 menu01Option=$(whiptail	 --title "${TITULO}" --backtitle "${BANNER}" --menu "Selecione a opção desejada:" --fb 25 78 16 \
-"1" "Instalação Completa" \
-"2" "Instalação de Programas Baíscos" \
-"3" "Instalação TeawViewr" \
-"4" "Instalação Webmin" \
-"5" "Instalação Java Oracle" \
-"6" "Download Vsky" \
-"7" "Cria as Crons e Scripts" \
-"8" "Cria Usuário" \
-"9" "Fazer atualizações" \
+"1" "Atualiza Kubuntu" \
+"2" "Instalação Completa" \
+"3" "Instalação de Programas Baíscos" \
+"4" "Instalação TeawViewr" \
+"5" "Instalação Webmin" \
+"6" "Instalação Java Oracle" \
+"7" "Download Vsky" \
+"8" "Adiciona a Cron" \
+"9" "Cria Usuário padrão" \
 "10" "Configura IP" \
 "11" "Remover Programas Desnecessários" \
 "12" "Adionado os Scripts" \
@@ -100,6 +100,7 @@ sudo apt-get install ssh
 sudo apt-get install aptitude
 sudo aptitude install net-tools
 sudo aptitude install kdialog
+whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "FINAL - Programas Básicos Instalados"  --fb 0 0 0 
 echo " $DATA - FINAL - Programas Básicos Instalados" >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 }
@@ -111,6 +112,7 @@ cd $DIRETORIO
 wget $URL_TEAM -O teamviewer.deb
 sudo dpkg -i teamviewer.deb
 sudo apt-get install -f -y
+whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "FINAL - TEAMVIWER"  --fb 0 0 0 
 echo " $DATA - FINAL - TEAMVIWER" >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 }
@@ -125,6 +127,7 @@ sudo apt-get install -f
 wget $URL_TEMA
 unzip authentic-theme.zip
 cp -r -f $DIRETORIO/authentic-theme  /usr/share/webmin/ #substitui a pasta tema
+whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "FINAL - WEBMIN "  --fb 0 0 0 
 echo " $DATA - FINAL - WEBMIN " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 }
@@ -136,6 +139,7 @@ sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
 sudo apt-get install oracle-java8-installer
 sudo apt-get install oracle-java8-set-default
+whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "FINAL - JAVA "  --fb 0 0 0 
 echo " $DATA - FINAL - JAVA " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 }
@@ -146,6 +150,7 @@ echo " $DATA - INICIO - VSKY " >> $LOG;
 cd $DIRETORIO
 wget $URL_VSKY
 unzip VSkyDesktop.zip
+whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "FINAL - VSKY"  --fb 0 0 0 
 echo " $DATA - FINAL - VSKY " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 }
@@ -155,6 +160,7 @@ echo "|--------------------------------------------------------------|" >> $LOG
 echo " $DATA - INICIO - CRONS " >> $LOG;
 echo -e "00 */1 * * * /usr/bin/mensagem.sh" >> /etc/crontab;
 /etc/init.d/cron restart;
+whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "FINAL - CRONS"  --fb 0 0 0 
 echo " $DATA - FINAL - CRONS " >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 }
@@ -169,6 +175,7 @@ tar -xvzpf backup.users -C /
 USER=$(whiptail --title "${TITULO}" --backtitle "${BANNER}" --inputbox "Digite o nome do Usuário:" --fb 10 60 3>&1 1>&2 2>&3)
 sudo usermod -d /home/$USER -m medico3
 sudo usermod -l $USER medico3
+whiptail --title "${TITULO}" --backtitle "${BANNER}" --msgbox "FINAL - USUÁRIOS "  --fb 0 0 0 
 echo " $DATA - FINAL - USUÁRIOS" >> $LOG;
 echo "|--------------------------------------------------------------|" >> $LOG
 }
@@ -387,40 +394,42 @@ do
 case $menu01Option in
 
 	1) 
-		#Instalação Completa
-		CRIA_DIRETORIO 
-		BASICOS # 2
-		TEAMVIWER # 3
-		WEBMIN # 4
-		JAVA # 5
-		VSKY #6
-		CRONS #7
-		USUARIO #8
-		ATUALIZA # 9
-		IP #10
-		REMOVE # 11
-		END_MSG
-		kill $$
+		#Atualizações
+		ATUALIZA
+		MAIN_MENU
 	;;
 	2) 
+		#Instalação Completa
+		CRIA_DIRETORIO 
+		BASICOS # 3
+		TEAMVIWER # 4
+		WEBMIN # 5
+		JAVA # 6
+		VSKY # 7
+		CRONS # 8
+		USUARIO # 9
+		IP #10
+		MAIN_MENU
+	;;
+	3) 
 		#Instalação de Programas Baíscos
 		CRIA_DIRETORIO
 		BASICOS
 		MAIN_MENU
 	;;
-	3) 
+	4) 
 		#Instalação TeawViewr
 		CRIA_DIRETORIO
 		TEAMVIWER
 		MAIN_MENU
 	;;
-	4) 
+	5) 
 		#Instalação Webmin
 		CRIA_DIRETORIO
 		WEBMIN
 		MAIN_MENU
 	;;
-	5) 
+	6) 
 		#Instalação Java Oracle
 		CRIA_DIRETORIO
 		JAVA
@@ -442,11 +451,6 @@ case $menu01Option in
 		#Importa Usuário
 		CRIA_DIRETORIO
 		USUARIO
-		MAIN_MENU
-	;;
-	9) 
-		#Atualizações
-		ATUALIZA
 		MAIN_MENU
 	;;
 	10) 
