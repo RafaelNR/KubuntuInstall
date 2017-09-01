@@ -435,19 +435,19 @@ case $menu01Option in
 		JAVA
 		MAIN_MENU
 	;;
-	6) 
+	7) 
 		#Download Vsky
 		CRIA_DIRETORIO
 		VSKY
 		MAIN_MENU
 	;;
-	7)
+	8)
 		#Cria Crons e Scripts
 		CRIA_DIRETORIO
 		CRONS
 		MAIN_MENU
 	;;
-	8)
+	9)
 		#Importa Usuário
 		CRIA_DIRETORIO
 		USUARIO
